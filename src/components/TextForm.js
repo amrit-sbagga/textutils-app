@@ -30,6 +30,17 @@ export default function TextForm(props) {
         setText(newText);
     }
 
+    const handleCopy = () => {
+        var text = document.getElementById("myBox");
+        text.select();
+        navigator.clipboard.writeText(text.value)
+    }
+
+    const handleExtraSpaces = () => {
+        let newText = text.split(/[ ]+/)
+        setText(newText.join(" "))
+    }
+
     return (
         <>
         <div className="container">
@@ -44,6 +55,8 @@ export default function TextForm(props) {
             <button className="btn btn-primary mx-2" onClick={handleLowClick}>Convert to lowercase</button>
             <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
             <button className="btn btn-primary mx-2" onClick={handleReverseClick}>Reverse Text</button>
+            <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
+            <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Remove Extra Space</button>
         </div>
         <div className="container my-3">
             <h2>Your text summary</h2>
